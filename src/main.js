@@ -4,6 +4,9 @@ import router from "./router";
 import store from "./store";
 import "@/styles/index.scss"; // global css
 import vuetify from "./plugins/vuetify";
+import Vuelidate from "vuelidate";
+
+Vue.use(Vuelidate);
 
 Vue.config.productionTip = false;
 

@@ -31,7 +31,7 @@ const actions = {
 
 const mutations = {
   changeName(state, payload) {
-    console.log(payload)
+    console.log(payload);
   }
 };
 

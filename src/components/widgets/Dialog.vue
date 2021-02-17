@@ -89,6 +89,7 @@
 </template>
 
 <script>
+import { required, email } from "vuelidate/lib/validators";
 export default {
   name: "Dialog",
   props: ["user"],
@@ -99,6 +100,12 @@ export default {
     lastName: "",
     email: ""
   }),
+  validations: {
+    email: {
+      required,
+      email
+    }
+  },
   mounted() {},
   methods: {
     changeUser() {
