@@ -3,18 +3,28 @@
     <template v-slot:default>
       <thead>
         <tr>
+          <th v-html="specialCharacters" class="text-left"></th>
           <th class="text-left">
-            Name
+            task_id
           </th>
           <th class="text-left">
-            Calories
+            task_title
+          </th>
+          <th class="text-left">
+            task_description
+          </th>
+          <th class="text-left">
+            task_person_id
           </th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in desserts" :key="item.name">
-          <td>{{ item.name }}</td>
-          <td>{{ item.calories }}</td>
+        <tr v-for="(task, index) in tasks" :key="task.task_id">
+          <td>{{ index }}</td>
+          <td>{{ task.task_id }}</td>
+          <td>{{ task.task_title }}</td>
+          <td>{{ task.task_description }}</td>
+          <td>{{ task.task_person_id }}</td>
         </tr>
       </tbody>
     </template>
@@ -26,6 +36,7 @@ export default {
   name: "Task",
   data() {
     return {
+      specialCharacters: "&#8470",
       desserts: [
         {
           name: "Frozen Yogurt",
@@ -69,6 +80,11 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    tasks() {
+      return this.$store.getters["tasks"];
+    }
   }
 };
 </script>

@@ -41,6 +41,7 @@
                 <v-text-field
                   label="Email*"
                   required
+                  :value="user.person_email"
                   :error-messages="errorMessage()"
                   v-model.trim="$v.email.$model"
                 ></v-text-field>
@@ -85,6 +86,7 @@ export default {
     email: ""
   }),
   mounted() {
+    this.id = this.user.person_id;
     this.name = this.user.person_name;
     this.surname = this.user.person_surname;
     this.lastName = this.user.person_lastname;
@@ -96,16 +98,18 @@ export default {
       email
     }
   },
+  computed: {},
   methods: {
     changeUser() {
       this.$store.dispatch("changeName", {
-        id: this.user.person_id,
+        id: this.id,
         name: this.name,
         surname: this.surname,
         lastName: this.lastName,
         email: this.email
       });
       this.dialog = false;
+      console.log(this.$v.email)
     },
     errorMessage() {
       if (this.$v.email.$dirty && !this.$v.email.required) {

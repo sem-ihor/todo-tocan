@@ -15,6 +15,13 @@ const state = {
       person_name: "Ivan",
       person_surname: "Budco",
       person_lastname: "Grigor..."
+    },
+    {
+      person_id: uuidv4(),
+      person_email: "igors@gmail.com",
+      person_name: "Ihor",
+      person_surname: "Semenovich",
+      person_lastname: "Grigor..."
     }
   ]
 };
@@ -31,7 +38,15 @@ const actions = {
 
 const mutations = {
   changeName(state, payload) {
-    console.log(payload);
+    const elementIndexToUpdate = state.users.findIndex(
+      user => user.person_id === payload.id
+    );
+    if (elementIndexToUpdate) {
+      state.users[elementIndexToUpdate].person_name = payload.name;
+      state.users[elementIndexToUpdate].person_email = payload.person_email;
+      state.users[elementIndexToUpdate].person_lastname = payload.lastName;
+      state.users[elementIndexToUpdate].person_surname = payload.surname;
+    }
   }
 };
 
