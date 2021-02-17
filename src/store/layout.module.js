@@ -1,10 +1,4 @@
 const state = {
-  layoutType: "vertical",
-  layoutWidth: "fluid",
-  leftSidebarType: "light",
-  leftSidebarSize: "default",
-  menuPosition: "fixed",
-  topbar: "dark",
   loader: false,
   drawer: true,
   fixed: false,
