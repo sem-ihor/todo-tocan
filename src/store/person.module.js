@@ -15,6 +15,9 @@ const actions = {
   addDefaultUser(state, users) {
     state.commit("addDefaultUser", users);
   },
+  deleteUser(state, person_id) {
+    state.commit("deleteUser", person_id);
+  },
   changeName(state, payload) {
     state.commit("changeName", payload);
   }
@@ -32,6 +35,14 @@ const mutations = {
   },
   addDefaultUser(state, users) {
     state.users = users;
+  },
+  deleteUser(state, person_id) {
+    const elementIndexToUpdate = state.users.findIndex(
+      user => user.person_id === person_id
+    );
+    if (elementIndexToUpdate) {
+      state.users.splice(elementIndexToUpdate, 1);
+    }
   },
   changeName(state, payload) {
     const elementIndexToUpdate = state.users.findIndex(

@@ -21,6 +21,8 @@
               Email
             </th>
             <th></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -34,12 +36,32 @@
             <td>
               <Dialog :user="user" />
             </td>
+            <td>
+              <v-btn fab small plain color="cyan">
+                <v-icon dark>
+                  mdi-eye
+                </v-icon>
+              </v-btn>
+            </td>
+            <td>
+              <v-btn
+                @click="deleteUser(user.person_id)"
+                fab
+                small
+                plain
+                color="cyan"
+              >
+                <v-icon dark>
+                  mdi-delete-outline
+                </v-icon>
+              </v-btn>
+            </td>
           </tr>
         </tbody>
       </template>
     </v-simple-table>
     <div class="btn-container">
-      <v-btn class="mx-2" @click="addUser" fab small plain color="cyan">
+      <v-btn @click="addUser" fab small plain color="cyan">
         <v-icon dark>
           mdi-plus
         </v-icon>
@@ -56,49 +78,7 @@ export default {
   data() {
     return {
       dialog: false,
-      specialCharacters: "&#8470",
-      desserts: [
-        {
-          name: "Frozen Yogurt",
-          calories: 159
-        },
-        {
-          name: "Ice cream sandwich",
-          calories: 237
-        },
-        {
-          name: "Eclair",
-          calories: 262
-        },
-        {
-          name: "Cupcake",
-          calories: 305
-        },
-        {
-          name: "Gingerbread",
-          calories: 356
-        },
-        {
-          name: "Jelly bean",
-          calories: 375
-        },
-        {
-          name: "Lollipop",
-          calories: 392
-        },
-        {
-          name: "Honeycomb",
-          calories: 408
-        },
-        {
-          name: "Donut",
-          calories: 452
-        },
-        {
-          name: "KitKat",
-          calories: 518
-        }
-      ]
+      specialCharacters: "&#8470"
     };
   },
   computed: {
@@ -109,6 +89,9 @@ export default {
   methods: {
     addUser() {
       this.$store.dispatch("addUser");
+    },
+    deleteUser(person_id) {
+      this.$store.dispatch("deleteUser", person_id);
     }
   }
 };
