@@ -33,10 +33,22 @@ const getters = {
 const actions = {
   changeName(state, payload) {
     state.commit("changeName", payload);
+  },
+  addUser(state) {
+    state.commit("addUser");
   }
 };
 
 const mutations = {
+  addUser(state) {
+    state.users.push({
+      person_id: uuidv4(),
+      person_email: "",
+      person_name: "",
+      person_surname: "",
+      person_lastname: ""
+    });
+  },
   changeName(state, payload) {
     const elementIndexToUpdate = state.users.findIndex(
       user => user.person_id === payload.id

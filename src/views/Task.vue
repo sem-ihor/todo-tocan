@@ -16,6 +16,7 @@
           <th class="text-left">
             task_person_id
           </th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -25,6 +26,7 @@
           <td>{{ task.task_title }}</td>
           <td>{{ task.task_description }}</td>
           <td>{{ task.task_person_id }}</td>
+          <td>1</td>
         </tr>
       </tbody>
     </template>

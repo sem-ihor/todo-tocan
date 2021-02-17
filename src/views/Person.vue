@@ -39,7 +39,7 @@
       </template>
     </v-simple-table>
     <div class="btn-container">
-      <v-btn class="mx-2" fab small plain color="cyan">
+      <v-btn class="mx-2" @click="addUser" fab small plain color="cyan">
         <v-icon dark>
           mdi-plus
         </v-icon>
@@ -106,7 +106,11 @@ export default {
       return this.$store.getters["users"];
     }
   },
-  methods: {}
+  methods: {
+    addUser() {
+      this.$store.dispatch("addUser");
+    }
+  }
 };
 </script>
 
