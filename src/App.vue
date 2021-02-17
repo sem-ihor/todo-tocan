@@ -9,18 +9,21 @@
     <!--Top Bar-->
     <Topbar />
     <!--Right Bar-->
-
+    <Rightbar />
     <!--Footer-->
+    <Footer />
   </v-app>
 </template>
 
 <script>
 import Topbar from "./components/Topbar";
 import Sidebar from "./components/Sidebar";
+import Rightbar from "./components/Rightbar";
+import Footer from "./components/Footer";
 export default {
   name: "App",
 
-  components: { Sidebar, Topbar },
+  components: { Footer, Rightbar, Sidebar, Topbar },
 
   data: () => ({
     //

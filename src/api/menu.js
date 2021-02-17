@@ -22,12 +22,12 @@ export const menuItems = [
       {
         id: 4,
         label: "Crm",
-        link: "/dashboard/crm"
+        link: "/task"
       },
       {
         id: 5,
         label: "Analytics",
-        link: "/dashboard/analytics"
+        link: "/person"
       }
     ]
   },
