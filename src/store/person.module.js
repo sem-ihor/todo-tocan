@@ -23,9 +23,17 @@ const getters = {
   users: state => state.users
 };
 
-const actions = {};
+const actions = {
+  changeName(state, payload) {
+    state.commit("changeName", payload);
+  }
+};
 
-const mutations = {};
+const mutations = {
+  changeName(state, payload) {
+    console.log(payload)
+  }
+};
 
 export default {
   state,

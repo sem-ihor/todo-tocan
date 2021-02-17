@@ -31,7 +31,7 @@
           <td>{{ user.person_lastname }}</td>
           <td>{{ user.person_email }}</td>
           <td>
-            <Dialog />
+            <Dialog :user="user"/>
           </td>
         </tr>
       </tbody>
