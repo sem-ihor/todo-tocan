@@ -19,7 +19,9 @@ const state = {
   ]
 };
 
-const getters = {};
+const getters = {
+  users: state => state.users
+};
 
 const actions = {};
 

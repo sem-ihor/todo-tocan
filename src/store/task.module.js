@@ -17,7 +17,9 @@ const state = {
   ]
 };
 
-const getters = {};
+const getters = {
+  tasks: state => state.tasks
+};
 
 const actions = {};
 

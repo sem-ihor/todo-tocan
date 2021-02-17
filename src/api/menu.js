@@ -16,17 +16,17 @@ export const menuItems = [
     subItems: [
       {
         id: 3,
-        label: "Sales",
+        label: "Home",
         link: "/"
       },
       {
         id: 4,
-        label: "Crm",
+        label: "Task",
         link: "/task"
       },
       {
         id: 5,
-        label: "Analytics",
+        label: "User",
         link: "/person"
       }
     ]

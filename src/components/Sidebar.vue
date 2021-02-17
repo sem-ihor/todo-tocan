@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-navigation-drawer
-      :value="true"
+      :value="drawer"
       :mini-variant="!drawer"
       :clipped="clipped"
       :absolute="!drawer"
