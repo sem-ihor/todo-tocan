@@ -1,29 +1,7 @@
 import { v4 as uuidv4 } from "uuid";
 
 const state = {
-  users: [
-    {
-      person_id: uuidv4(),
-      person_email: "igors@gmail.com",
-      person_name: "Ihor",
-      person_surname: "Semenovich",
-      person_lastname: "Grigor..."
-    },
-    {
-      person_id: uuidv4(),
-      person_email: "igor1s@gmail.com",
-      person_name: "Ivan",
-      person_surname: "Budco",
-      person_lastname: "Grigor..."
-    },
-    {
-      person_id: uuidv4(),
-      person_email: "igors@gmail.com",
-      person_name: "Ihor",
-      person_surname: "Semenovich",
-      person_lastname: "Grigor..."
-    }
-  ]
+  users: []
 };
 
 const getters = {
@@ -31,11 +9,14 @@ const getters = {
 };
 
 const actions = {
+  addUser(state, users) {
+    state.commit("addUser", users);
+  },
+  addDefaultUser(state, users) {
+    state.commit("addDefaultUser", users);
+  },
   changeName(state, payload) {
     state.commit("changeName", payload);
-  },
-  addUser(state) {
-    state.commit("addUser");
   }
 };
 
@@ -48,6 +29,9 @@ const mutations = {
       person_surname: "",
       person_lastname: ""
     });
+  },
+  addDefaultUser(state, users) {
+    state.users = users;
   },
   changeName(state, payload) {
     const elementIndexToUpdate = state.users.findIndex(

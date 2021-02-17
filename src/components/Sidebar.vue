@@ -44,43 +44,6 @@
           </div>
         </v-list>
       </perfect-scrollbar>
-      <!--      <div v-if="drawer">
-        <v-list dense>
-          <div v-for="item in menuItems" :key="item.title">
-            <v-list-group
-              v-if="item.hasOwnProperty('subItems')"
-              v-model="item.active"
-              :prepend-icon="item.icon"
-              no-action
-            >
-              <template #activator>
-                <v-list-item-content>
-                  <v-list-item-title v-text="item.label"></v-list-item-title>
-                </v-list-item-content>
-              </template>
-
-              <v-list-item
-                v-for="child in item.subItems"
-                :key="child.title"
-                :to="child.link"
-              >
-                <v-list-item-content>
-                  <v-list-item-title v-text="child.label"></v-list-item-title>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list-group>
-            <v-subheader v-else-if="item.isTitle">{{ item.label }}</v-subheader>
-            <v-list-item v-else-if="!item.isTitle" :to="item.link">
-              <v-list-item-icon>
-                <v-icon v-text="item.icon"></v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title v-text="item.label"></v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </div>
-        </v-list>
-      </div>-->
     </v-navigation-drawer>
   </div>
 </template>
