@@ -18,16 +18,14 @@
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
                   label="Legal first name*"
-                  :value="user.person_name"
-                  @input="changeName"
+                  v-model.trim="name"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
                 <v-text-field
                   label="Legal middle name"
                   hint="example of helper text only on focus"
-                  :value="user.person_lastname"
-                  @input="changeLastName"
+                  v-model.trim="surname"
                 ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6" md="4">
@@ -36,17 +34,15 @@
                   hint="example of persistent helper text"
                   persistent-hint
                   required
-                  :value="user.person_surname"
-                  @input="changeSurname"
+                  v-model.trim="lastName"
                 ></v-text-field>
               </v-col>
               <v-col cols="12">
                 <v-text-field
                   label="Email*"
-                  :value="user.person_email"
-                  :rules="emailRules"
                   required
-                  v-model.trim="email"
+                  :error-messages="errorMessage()"
+                  v-model.trim="$v.email.$model"
                 ></v-text-field>
               </v-col>
             </v-row>
@@ -58,7 +54,15 @@
           <v-btn color="blue darken-1" text @click="dialog = false">
             Close
           </v-btn>
-          <v-btn color="blue darken-1" text @click="changeUser">
+          <v-btn
+            color="blue darken-1"
+            :disabled="
+              ($v.email.$dirty && !$v.email.required) ||
+                ($v.email.$dirty && !$v.email.email)
+            "
+            text
+            @click="changeUser"
+          >
             Save
           </v-btn>
         </v-card-actions>
@@ -68,6 +72,8 @@
 </template>
 
 <script>
+import { required, email } from "vuelidate/lib/validators";
+
 export default {
   name: "Dialog",
   props: ["user"],
@@ -76,14 +82,19 @@ export default {
     name: "",
     surname: "",
     lastName: "",
-    email: "",
-    emailRules: [
-      v => !!v || "E-mail is required",
-      v => /.+@.+/.test(v) || "E-mail must be valid"
-    ]
+    email: ""
   }),
   mounted() {
+    this.name = this.user.person_name;
+    this.surname = this.user.person_surname;
+    this.lastName = this.user.person_lastname;
     this.email = this.user.person_email;
+  },
+  validations: {
+    email: {
+      required,
+      email
+    }
   },
   methods: {
     changeUser() {
@@ -96,14 +107,12 @@ export default {
       });
       this.dialog = false;
     },
-    changeName(name) {
-      this.name = name;
-    },
-    changeSurname(surname) {
-      this.surname = surname;
-    },
-    changeLastName(lastName) {
-      this.lastName = lastName;
+    errorMessage() {
+      if (this.$v.email.$dirty && !this.$v.email.required) {
+        return "The email field is required!";
+      } else if (this.$v.email.$dirty && !this.$v.email.email) {
+        return "The input must be a proper email!";
+      } else return "";
     }
   }
 };

@@ -1,10 +1,7 @@
 <template>
   <router-link to="/">
     <span v-if="drawer" class="logo-container">
-      <v-img
-        max-width="148px"
-        :src="require('@/assets/logo-light.png')"
-      />
+      <v-img max-width="148px" :src="require('@/assets/logo-light.png')" />
     </span>
     <span v-else class="logo-container">
       <v-img
