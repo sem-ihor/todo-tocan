@@ -35,6 +35,7 @@
                   label="Legal last name*"
                   hint="example of persistent helper text"
                   persistent-hint
+                  required
                   :value="user.person_surname"
                   @input="changeSurname"
                 ></v-text-field>
@@ -43,32 +44,10 @@
                 <v-text-field
                   label="Email*"
                   :value="user.person_email"
+                  :rules="emailRules"
                   required
+                  v-model.trim="email"
                 ></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-select
-                  :items="['0-17', '18-29', '30-54', '54+']"
-                  label="Age*"
-                  required
-                ></v-select>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-autocomplete
-                  :items="[
-                    'Skiing',
-                    'Ice hockey',
-                    'Soccer',
-                    'Basketball',
-                    'Hockey',
-                    'Reading',
-                    'Writing',
-                    'Coding',
-                    'Basejump'
-                  ]"
-                  label="Interests"
-                  multiple
-                ></v-autocomplete>
               </v-col>
             </v-row>
           </v-container>
@@ -89,7 +68,6 @@
 </template>
 
 <script>
-import { required, email } from "vuelidate/lib/validators";
 export default {
   name: "Dialog",
   props: ["user"],
@@ -98,15 +76,15 @@ export default {
     name: "",
     surname: "",
     lastName: "",
-    email: ""
+    email: "",
+    emailRules: [
+      v => !!v || "E-mail is required",
+      v => /.+@.+/.test(v) || "E-mail must be valid"
+    ]
   }),
-  validations: {
-    email: {
-      required,
-      email
-    }
+  mounted() {
+    this.email = this.user.person_email;
   },
-  mounted() {},
   methods: {
     changeUser() {
       this.$store.dispatch("changeName", {
