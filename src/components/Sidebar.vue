@@ -33,7 +33,11 @@
               </v-list-item>
             </v-list-group>
             <v-subheader v-else-if="item.isTitle">{{ item.label }}</v-subheader>
-            <v-list-item v-else-if="!item.isTitle" :to="item.link" :disabled="true">
+            <v-list-item
+              v-else-if="!item.isTitle"
+              :to="item.link"
+              :disabled="true"
+            >
               <v-list-item-icon>
                 <v-icon v-text="item.icon"></v-icon>
               </v-list-item-icon>

@@ -4,12 +4,12 @@
     <Logo :class="{ 'ml-4 mr-16': drawer, 'mr-2': drawer }" />
     <v-app-bar-nav-icon
       color="#fff"
-      @click.stop="$store.commit('CHANGE_DRAWER')"
+      @click.stop="$store.commit('changeDrawer')"
     ></v-app-bar-nav-icon>
     <v-btn
       color="#fff"
       icon
-      @click.stop="$store.commit('CHANGE_POSITION_FOOTER')"
+      @click.stop="$store.commit('changePositionFooter')"
     >
       <v-icon>mdi-minus</v-icon>
     </v-btn>
@@ -23,7 +23,7 @@
     <v-btn
       color="#fff"
       icon
-      @click.stop="$store.commit('CHANGE_RIGHT_DRAWER')"
+      @click.stop="$store.commit('changeRightDrawer')"
     >
       <v-icon>mdi-cog</v-icon>
     </v-btn>

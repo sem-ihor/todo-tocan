@@ -20,70 +20,67 @@ const getters = {
 
 const actions = {
   changeLayoutType({ commit }, { layoutType }) {
-    commit("CHANGE_LAYOUT", layoutType);
+    commit("changeLayout", layoutType);
   },
 
   changeLayoutWidth({ commit }, { layoutWidth }) {
-    commit("CHANGE_LAYOUT_WIDTH", layoutWidth);
+    commit("changeLayoutWidth", layoutWidth);
   },
 
   changeLeftSidebarType({ commit }, { leftSidebarType }) {
-    commit("CHANGE_LEFT_SIDEBAR_TYPE", leftSidebarType);
+    commit("changeLeftSidebarType", leftSidebarType);
   },
 
   changeLeftSidebarSize({ commit }, { leftSidebarSize }) {
-    commit("CHANGE_LEFT_SIDEBAR_SIZE", leftSidebarSize);
+    commit("changeLeftSidebarSize", leftSidebarSize);
   },
 
   changeTopbar({ commit }, { topbar }) {
-    commit("CHANGE_TOPBAR", topbar);
+    commit("changeTopbar", topbar);
   },
 
   changeLoaderValue({ commit }, { loader }) {
-    commit("LOADER", loader);
+    commit("loader", loader);
   },
 
   changeMenuPosition({ commit }, { menuPosition }) {
-    commit("CHANGE_POSITION", menuPosition);
+    commit("changeMenuPosition", menuPosition);
   }
 };
 
 const mutations = {
-  CHANGE_LAYOUT(state, layoutType) {
+  changeLayout(state, layoutType) {
     state.layoutType = layoutType;
   },
-  CHANGE_LAYOUT_WIDTH(state, layoutWidth) {
+  changeLayoutWidth(state, layoutWidth) {
     state.layoutWidth = layoutWidth;
   },
-  CHANGE_LEFT_SIDEBAR_TYPE(state, leftSidebarType) {
+  changeLeftSidebarType(state, leftSidebarType) {
     state.leftSidebarType = leftSidebarType;
   },
-  CHANGE_LEFT_SIDEBAR_SIZE(state, leftSidebarSize) {
+  changeLeftSidebarSize(state, leftSidebarSize) {
     state.leftSidebarSize = leftSidebarSize;
   },
-  CHANGE_TOPBAR(state, topbar) {
+  changeTopbar(state, topbar) {
     state.topbar = topbar;
   },
-  LOADER(state, loader) {
+  loader(state, loader) {
     state.loader = loader;
   },
-  CHANGE_POSITION(state, menuPosition) {
+  changeMenuPosition(state, menuPosition) {
     state.menuPosition = menuPosition;
   },
-  CHANGE_DRAWER(state) {
+  changeDrawer(state) {
     state.drawer = !state.drawer;
   },
-  CHANGE_POSITION_FOOTER(state) {
+  changePositionFooter(state) {
     state.fixed = !state.fixed;
   },
-  CHANGE_RIGHT_DRAWER(state) {
+  changeRightDrawer(state) {
     state.rightDrawer = !state.rightDrawer;
   },
-  CHANGE_POSITION_DRAWER(state) {
+  changePositionDrawer(state) {
     state.right = !state.right;
-  },
-  CHANGE_SIZE_WINDOW(state, windowSize) {
-    state.windowSize = windowSize;
   }
 };
 

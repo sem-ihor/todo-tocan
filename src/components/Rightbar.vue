@@ -2,7 +2,7 @@
   <v-navigation-drawer :value="rightDrawer" :right="right" temporary fixed>
     <v-list>
       <v-list-item
-        @click.native="$store.commit('layout/CHANGE_POSITION_DRAWER')"
+        @click.native="$store.commit('changePositionDrawer')"
       >
         <v-list-item-action>
           <v-icon light> mdi-repeat </v-icon>
