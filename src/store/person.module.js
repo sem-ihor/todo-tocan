@@ -18,8 +18,8 @@ const actions = {
   deleteUser(state, person_id) {
     state.commit("deleteUser", person_id);
   },
-  changeName(state, payload) {
-    state.commit("changeName", payload);
+  changeUser(state, payload) {
+    state.commit("changeUser", payload);
   }
 };
 
@@ -40,17 +40,17 @@ const mutations = {
     const elementIndexToUpdate = state.users.findIndex(
       user => user.person_id === person_id
     );
-    if (elementIndexToUpdate) {
+    if (elementIndexToUpdate !== -1) {
       state.users.splice(elementIndexToUpdate, 1);
     }
   },
-  changeName(state, payload) {
+  changeUser(state, payload) {
     const elementIndexToUpdate = state.users.findIndex(
       user => user.person_id === payload.id
     );
-    if (elementIndexToUpdate) {
+    if (elementIndexToUpdate !== -1) {
       state.users[elementIndexToUpdate].person_name = payload.name;
-      state.users[elementIndexToUpdate].person_email = payload.person_email;
+      state.users[elementIndexToUpdate].person_email = payload.email;
       state.users[elementIndexToUpdate].person_lastname = payload.lastName;
       state.users[elementIndexToUpdate].person_surname = payload.surname;
     }

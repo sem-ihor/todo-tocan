@@ -33,7 +33,6 @@
                   label="Legal last name*"
                   hint="example of persistent helper text"
                   persistent-hint
-                  required
                   v-model.trim="lastName"
                 ></v-text-field>
               </v-col>
@@ -41,7 +40,6 @@
                 <v-text-field
                   label="Email*"
                   required
-                  :value="user.person_email"
                   :error-messages="errorMessage()"
                   v-model.trim="$v.email.$model"
                 ></v-text-field>
@@ -76,7 +74,7 @@
 import { required, email } from "vuelidate/lib/validators";
 
 export default {
-  name: "Dialog",
+  name: "ChangeDialogUser",
   props: ["user"],
   data: () => ({
     dialog: false,
@@ -101,7 +99,7 @@ export default {
   computed: {},
   methods: {
     changeUser() {
-      this.$store.dispatch("changeName", {
+      this.$store.dispatch("changeUser", {
         id: this.id,
         name: this.name,
         surname: this.surname,
@@ -109,7 +107,6 @@ export default {
         email: this.email
       });
       this.dialog = false;
-      console.log(this.$v.email)
     },
     errorMessage() {
       if (this.$v.email.$dirty && !this.$v.email.required) {

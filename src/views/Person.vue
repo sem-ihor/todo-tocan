@@ -34,7 +34,7 @@
             <td>{{ user.person_lastname }}</td>
             <td>{{ user.person_email }}</td>
             <td>
-              <Dialog :user="user" />
+              <ChangeDialogUser :user="user" />
             </td>
             <td>
               <v-btn fab small plain color="cyan">
@@ -71,10 +71,10 @@
 </template>
 
 <script>
-import Dialog from "../components/widgets/Dialog";
+import ChangeDialogUser from "../components/widgets/ChangeDialogUser";
 export default {
   name: "Person",
-  components: { Dialog },
+  components: { ChangeDialogUser },
   data() {
     return {
       dialog: false,

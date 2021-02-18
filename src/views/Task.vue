@@ -17,6 +17,7 @@
             task_person_id
           </th>
           <th></th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -26,7 +27,22 @@
           <td>{{ task.task_title }}</td>
           <td>{{ task.task_description }}</td>
           <td>{{ task.task_person_id }}</td>
-          <td>1</td>
+          <td>
+            <ChangeDialogTask :task="task" />
+          </td>
+          <td>
+            <v-btn
+              @click="deleteTask(task.task_id)"
+              fab
+              small
+              plain
+              color="cyan"
+            >
+              <v-icon dark>
+                mdi-delete-outline
+              </v-icon>
+            </v-btn>
+          </td>
         </tr>
       </tbody>
     </template>
@@ -34,54 +50,19 @@
 </template>
 
 <script>
+import ChangeDialogTask from "../components/widgets/ChangeDialogTask";
 export default {
   name: "Task",
+  components: { ChangeDialogTask },
   data() {
     return {
       specialCharacters: "&#8470",
-      desserts: [
-        {
-          name: "Frozen Yogurt",
-          calories: 159
-        },
-        {
-          name: "Ice cream sandwich",
-          calories: 237
-        },
-        {
-          name: "Eclair",
-          calories: 262
-        },
-        {
-          name: "Cupcake",
-          calories: 305
-        },
-        {
-          name: "Gingerbread",
-          calories: 356
-        },
-        {
-          name: "Jelly bean",
-          calories: 375
-        },
-        {
-          name: "Lollipop",
-          calories: 392
-        },
-        {
-          name: "Honeycomb",
-          calories: 408
-        },
-        {
-          name: "Donut",
-          calories: 452
-        },
-        {
-          name: "KitKat",
-          calories: 518
-        }
-      ]
     };
+  },
+  methods: {
+    deleteTask(task_id) {
+      this.$store.dispatch("deleteTask", task_id);
+    }
   },
   computed: {
     tasks() {
