@@ -5,7 +5,14 @@ const state = {
 };
 
 const getters = {
-  users: state => state.users
+  users: state => state.users,
+  userByUuid: state => uuid => {
+    const elementIndex = state.users.findIndex(user => user.person_id === uuid);
+    if (elementIndex !== -1) {
+      return state.users[elementIndex];
+    }
+    return "";
+  }
 };
 
 const actions = {

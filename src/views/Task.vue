@@ -19,6 +19,7 @@
             </th>
             <th></th>
             <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -32,11 +33,15 @@
                 :items="userArr"
                 @input="selectUser($event, task)"
                 label="Standard"
+                :value="getUsersTask(task)"
                 dense
               ></v-select>
             </td>
             <td>
               <ChangeDialogTask :task="task" />
+            </td>
+            <td>
+              <ShowTaskInfo :task="task" />
             </td>
             <td>
               <v-btn
@@ -67,9 +72,10 @@
 
 <script>
 import ChangeDialogTask from "../components/widgets/ChangeDialogTask";
+import ShowTaskInfo from "../components/widgets/ShowTaskInfo";
 export default {
   name: "Task",
-  components: { ChangeDialogTask },
+  components: { ShowTaskInfo, ChangeDialogTask },
   data() {
     return {
       userArr: [],
@@ -97,6 +103,14 @@ export default {
         person_id: user,
         task_id: task.task_id
       });
+    },
+    getUsersTask(task) {
+      let user = this.$store.getters["userByUuid"](task.task_person_id);
+      return {
+        text: user.person_name + " " + user.person_surname,
+        value: user.person_id,
+        disabled: false
+      };
     }
   },
   computed: {

@@ -37,11 +37,7 @@
               <ChangeDialogUser :user="user" />
             </td>
             <td>
-              <v-btn fab small plain color="cyan">
-                <v-icon dark>
-                  mdi-eye
-                </v-icon>
-              </v-btn>
+              <ShowUserInfo :user="user" />
             </td>
             <td>
               <v-btn
@@ -72,9 +68,10 @@
 
 <script>
 import ChangeDialogUser from "../components/widgets/ChangeDialogUser";
+import ShowUserInfo from "../components/widgets/ShowUserInfo";
 export default {
   name: "Person",
-  components: { ChangeDialogUser },
+  components: { ShowUserInfo, ChangeDialogUser },
   data() {
     return {
       dialog: false,
@@ -97,6 +94,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
